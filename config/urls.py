@@ -15,5 +15,10 @@ urlpatterns = [
     path('frequencia/', FrequenciasView.as_view(), name='frequencia'),
     path('turma/', TurmasView.as_view(), name='turma'),
     path('ocorrencia/', OcorrenciasView.as_view(), name='ocorrencia'),
+    path('area_saber/', AreaSaberView.as_view(), name='area_saber'),
+    path('cidade/', CidadeView.as_view(), name='cidade'),
+    path('ocupacao/', OcupacaoView.as_view(), name='ocupacao'),
+    path('turno/', TurnoView.as_view(), name='turno'),
 ]
+
 

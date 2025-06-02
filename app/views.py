@@ -51,4 +51,23 @@ class OcorrenciasView(View):
     def get(self, request, *args, **kwargs):
         ocorrencias = Ocorrencia.objects.all()
         return render(request, 'ocorrencia.html', {'ocorrencias': ocorrencias})
+
+class AreaSaberView(View):
+    def get(self, request, *args, **kwargs):
+        areas = AreaSaber.objects.all()
+        return render(request, 'area_saber.html', {'areas': areas})
+
+class CidadeView(View):
+    def get(self, request, *args, **kwargs):
+        cidades = Cidade.objects.all()
+        return render(request, 'cidade.html', {'cidades': cidades})
     
+class OcupacaoView(View):
+    def get(self, request, *args, **kwargs):
+        ocupacoes = Ocupacao.objects.all()
+        return render(request, 'ocupacao.html', {'ocupacoes': ocupacoes})
+
+class TurnoView(View):
+    def get(self, request, *args, **kwargs):
+        turnos = Turno.objects.all()
+        return render(request, 'turno.html', {'turnos': turnos})
