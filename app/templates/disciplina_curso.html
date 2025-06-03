@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disciplinas por Curso</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <a class="navbar-brand" href="/">Sistema Acadêmico</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link text-dark" href="/">Home</a></li>
+      <li class="nav-item"><a class="nav-link text-dark" href="/admin/">Administração</a></li>
+      <li class="nav-item"><a class="nav-link text-dark" href="{% url 'disciplinas_por_curso' %}">Disciplinas por Curso</a></li>
+      <li class="nav-item"><a class="nav-link text-dark" href="{% url 'tipos_avaliacao_list' %}">Tipos de Avaliação</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Disciplinas por Curso</h2>
+
+  {% for item in dados %}
+    <div class="card mb-4">
+      <div class="card-header bg-success text-white">
+        {{ item.curso.nome }}
+      </div>
+      <div class="card-body">
+        {% if item.disciplinas %}
+          <ul class="list-group">
+            {% for cd in item.disciplinas %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ cd.disciplina.nome }}
+                <span class="badge badge-primary">{{ cd.turno.nome }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-muted">Nenhuma disciplina vinculada a este curso.</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
